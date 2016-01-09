@@ -1,0 +1,13 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: docker
+      homebrew:
+        - name: {{ item }}
+        - state: present
+      with_items:
+        - docker
+        - docker-machine
+        - docker-compose
+        - docker-swarm
