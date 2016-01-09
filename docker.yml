@@ -4,7 +4,7 @@
   tasks:
     - name: docker
       homebrew:
-        - name: {{ item }}
+        - name: {{ item }}"
         - state: present
       with_items:
         - docker
