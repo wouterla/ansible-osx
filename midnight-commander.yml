@@ -1,0 +1,11 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: midnight-commander
+      homebrew:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - mc
+      sudo: no
