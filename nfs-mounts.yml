@@ -1,0 +1,40 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: add nfs to autoloader
+      lineinfile:
+        dest: /etc/auto_master
+        line: '/-                      auto_nfs        -nobrowse,nosuid'
+
+    - name: add nfs mounts to auto_nfs
+      lineinfile:
+        dest: /etc/auto_nfs
+        line: "/../Volumes/{{ item.target }}    -fstype=nfs,noowners,nolockd,noresvport,hard,bg,intr,rw,tcp,nfc nfs://192.168.64.94:{{ item.mountpoint }}"
+      with_items:
+        - target: series
+          mountpoint: /data/series
+        - target: movies
+          mountpoint: /data/movies
+        - target: comics
+          mountpoint: /data/comics
+        - target: books
+          mountpoint: /data/books
+        - target: photos
+          mountpoint: /data/photos
+        - target: opt
+          mountpoint: /opt
+        - target: data1
+          mountpoint: /mnt/data1
+        - target: data2
+          mountpoint: /mnt/data2
+        - target: data3
+          mountpoint: /mnt/data3
+
+    - name: set nfs config for reconnect and utf-8
+      lineinfile:
+        dest: /etc/nfs.conf
+        line: nfs.client.mount.options = nfc,intr
+
+    - name: mount all volumes
+      shell: automount -cv
