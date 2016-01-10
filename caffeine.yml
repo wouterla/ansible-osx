@@ -1,0 +1,11 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: caffeine
+      homebrew_cask:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - caffeine
+      sudo: no
