@@ -1,0 +1,9 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: install calibre ebook manager
+      mac_pkg: pkg_type=app
+               url=http://calibre-ebook.com/dist/osx
+               archive_type=dmg archive_path='calibre.app'
+      sudo: yes
