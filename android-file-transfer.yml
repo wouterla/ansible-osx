@@ -1,0 +1,22 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: command-line-tools-brew
+      homebrew:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - bash-completion
+        - imagemagick
+        - autojump
+        - zsh
+        - tmux
+      sudo: no
+    - name: command-line-tools-cask
+      homebrew_cask:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - android-file-transfer
+      sudo: no
