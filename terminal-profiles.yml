@@ -1,0 +1,22 @@
+---
+- hosts: workstation
+  vars:
+    profiles:
+      - Ocean
+      - Ridcully
+      - Midnight Commander
+
+  tasks:
+  - name: Ensure custom Terminal profile is set as default.
+    shell: defaults write com.apple.Terminal 'Default Window Settings' -string 'Ocean'
+    sudo: no
+
+  - name: And as startup profile
+    shell: defaults write com.apple.Terminal 'Startup Window Settings' -string 'Ocean'
+    sudo: no
+
+  - name: Ensure custom Terminal profiles are added.
+    shell: open files/terminal/{{ item }}.terminal
+    ignore_errors: true
+    sudo: no
+    with_items: profiles
