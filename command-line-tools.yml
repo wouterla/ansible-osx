@@ -10,6 +10,8 @@
         - bash-completion
         - imagemagick
         - autojump
+        - zsh
+        - tmux
       sudo: no
     - name: command-line-tools-cask
       homebrew_cask:
