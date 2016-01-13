@@ -1,0 +1,40 @@
+---
+- hosts: workstation
+
+  tasks:
+  - name: Menu bar - show remaining battery percentage
+    shell: defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+    sudo: no
+
+  - name: Save screenshots in PNG format (other options BMP, GIF, JPG, PDF, TIFF)
+    shell: defaults write com.apple.screencapture type -string "png"
+    sudo: no
+
+  - name: Finder - show hidden files by default
+    shell: defaults write com.apple.finder AppleShowAllFiles -bool true
+    sudo: no
+
+  - name: Finder - show all filename extensions
+    shell: defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+    sudo: no
+
+  - name: Display full POSIX path as Finder window title
+    shell: defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+    sudo: no
+
+  - name: Avoid creating .DS_Store files on network volumes
+    shell: defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+    sudo: no
+
+    # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+  - name: Use list view in all Finder windows by default
+    shell: defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+    sudo: no
+
+  - name: autohide dock
+    shell: defaults write com.apple.dock autohide -bool true
+    sudo: no
+
+  - name: disable dash
+    shell: defaults write com.apple.dashboard mcx-disabled -boolean YES && killall Dock
+    sudo: no
