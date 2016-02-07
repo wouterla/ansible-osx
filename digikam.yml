@@ -1,0 +1,11 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: install digikam
+        homebrew_cask:
+          name: "{{ item }}"
+          state: present
+        with_items:
+          - digikam
+        sudo: no

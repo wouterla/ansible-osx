@@ -1,0 +1,9 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: install tunnelblick
+      homebrew_cask:
+        name: tunnelblick
+        state: present
+      sudo: no

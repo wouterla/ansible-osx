@@ -1,0 +1,14 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: install nodejs
+      homebrew:
+        name: node
+        state: present
+      sudo: no
+
+    - name: install grunt
+      npm:
+        name: grunt-cli
+        global: yes

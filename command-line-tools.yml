@@ -12,6 +12,10 @@
         - autojump
         - zsh
         - tmux
+        - gphoto2
+        - git
+        - git-flow
+        - jq
       sudo: no
     - name: command-line-tools-cask
       homebrew_cask:

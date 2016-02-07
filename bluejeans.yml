@@ -1,0 +1,9 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: install gitx
+      mac_pkg: pkg_type=app
+               url=https://swdl.bluejeans.com/desktop/mac/launchers/BlueJeansLauncher_live_165.dmg
+               archive_type=dmg archive_path='Blue Jeans Launcher.app'
+      sudo: yes

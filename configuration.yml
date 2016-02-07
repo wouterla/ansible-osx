@@ -10,9 +10,9 @@
     shell: defaults write com.apple.screencapture type -string "png"
     sudo: no
 
-  - name: Finder - show hidden files by default
-    shell: defaults write com.apple.finder AppleShowAllFiles -bool true
-    sudo: no
+  # - name: Finder - show hidden files by default
+  #   shell: defaults write com.apple.finder AppleShowAllFiles -bool false
+  #   sudo: no
 
   - name: Finder - show all filename extensions
     shell: defaults write NSGlobalDomain AppleShowAllExtensions -bool true

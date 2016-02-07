@@ -1,0 +1,7 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: update
+      shell: brew update && brew upgrade
+      sudo: no
