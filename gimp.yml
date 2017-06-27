@@ -1,0 +1,11 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: gimp
+      homebrew_cask:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - gimp
+      sudo: no

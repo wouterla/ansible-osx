@@ -1,0 +1,29 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: install ruby
+      homebrew:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - rbenv
+        - ruby-build
+      sudo: no
+
+    - name: add ruby env to bash rc
+      lineinfile:
+        line: 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi'
+        dest: /Users/wouter/.bashrc
+
+    - name: install ruby
+      shell: "{{ item }}"
+      with_items:
+        - "rbenv install 2.3.0"
+        - "rbenv global 2.3.0"
+        - "ruby -v"
+
+    - name: install rspec
+      gem:
+        name: 'rspec'
+        state: 'present'

@@ -1,0 +1,18 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: Install Ansible
+      homebrew:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - ansible
+      sudo: no
+    - name: Install Ansible Dependencies
+      pip:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - pyrax
+      sudo: no

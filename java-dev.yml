@@ -1,0 +1,13 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: Install Java dev tooling
+      homebrew:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - maven
+        - ant
+        - ant-contrib
+      sudo: no

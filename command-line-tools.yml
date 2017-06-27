@@ -16,6 +16,7 @@
         - git
         - git-flow
         - jq
+        - wget
       sudo: no
     - name: command-line-tools-cask
       homebrew_cask:
@@ -23,4 +24,5 @@
         state: present
       with_items:
         - the-unarchiver
+        - vagrant
       sudo: no

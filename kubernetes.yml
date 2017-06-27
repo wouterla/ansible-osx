@@ -1,0 +1,11 @@
+---
+- hosts: workstation
+
+  tasks:
+    - name: kubernetes
+      homebrew:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - kubernetes-cli
+      sudo: no
